@@ -28,8 +28,10 @@ const Singlepost = () => {
       body,
       'name': author->name,
       'authorImage': author->image
-    }`).then((data)=> setSinglePost(data[0]))
-    .catch(console.error);
+    }`
+  )
+  .then((data)=> setSinglePost(data[0]))
+  .catch(console.error);
   }, [slug])
 
   if (!singlePost) return <div>Loading ... .. .</div>
