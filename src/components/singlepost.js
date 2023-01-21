@@ -11,8 +11,8 @@ function urlFor(source) {
 }
 
 const Singlepost = () => {
-  const [singlePost, setSinglePost] = useState(null)
-  const {slug} = useParams()
+  const [singlePost, setSinglePost] = useState(null);
+  const {slug} = useParams();
 
   useEffect(() => {
     sanityClient.fetch(`*[slug.current == '${slug}']{
