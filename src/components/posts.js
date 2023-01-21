@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
+import sanityClient from '../client'
 
 const posts = () => {
-  return (
-    <div>post page</div>
-  )
+  const [postData, setPost] = useState(null);
+
+  useEffect(() => {
+    sanityClient.fetch(`*[_type == 'post']{
+        title,
+        slug,
+        mainImage{
+          asset->{
+            _id,
+            url
+          },
+          alt
+        }
+      }`)
+      .then((data) => setPost(data))
+      .catch(console.error);
+  }, [])
 }
 
 export default posts
